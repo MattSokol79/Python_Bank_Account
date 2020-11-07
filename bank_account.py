@@ -54,9 +54,9 @@ def main():
     test = MyAccount(73763632, 200000, "Matt Sokol", "27 Baker Street, Bravoos", "22")
 
     #print(test.deposit())
-    print(test.withdraw())
-   # print(test.account_number)
-    print(test.display())
+    #print(test.withdraw())
+    #print(test.account_number)
+    #print(test.display())
 
 if __name__ == '__main__':
     main()
