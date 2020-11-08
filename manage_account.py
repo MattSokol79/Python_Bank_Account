@@ -1,10 +1,11 @@
 from bank_account import MyAccount
 
-class ManageAccount(MyAccount):
+class ManageAccount(MyAccount): # Inherits everything from the other clases
     def __init__(self, account_number, balance, name, address, age):
         super().__init__(account_number, balance, name, address, age) # Inherits everything from the bank account class
         self.display()
 
+    # A menu display so user knows what to input for their desired action
     def display(self):
         print("""
         MENU
@@ -15,6 +16,7 @@ class ManageAccount(MyAccount):
         4. Withdraw - Withdraw money from your account
         """)
 
+        # Whilst the menu is displayed, allows user to input an action
         self.continue_displaying = True
         while self.continue_displaying:
             self.action()
@@ -23,6 +25,7 @@ class ManageAccount(MyAccount):
         selection = input("Please choose one of the available options in the menu --> (1,2,3,4).\n "
                           "(Or type 'exit' to stop the program)\n-> ").lower()
 
+        # Based on the input, an action is selected from other classes
         if '1' in selection:
             self.display_account_details()
 
@@ -32,10 +35,12 @@ class ManageAccount(MyAccount):
         elif '3' in selection:
             print(self.deposit())
             print("=" * 20)
+            print("")
 
         elif '4' in selection:
             print(self.withdraw())
             print("=" * 20)
+            print("")
 
         elif "exit" in selection:
             self.continue_displaying = False

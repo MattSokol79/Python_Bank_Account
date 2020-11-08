@@ -14,6 +14,7 @@ class MyAccount(AccountHolderDetails):
     def account_number(self):
         return self.__account_number
 
+    # Prevents editing of the users balance
     @property
     def balance(self):
         return float("{:.2f}".format(self.__balance))
@@ -22,32 +23,43 @@ class MyAccount(AccountHolderDetails):
     def balance(self, balance):
         self.__balance = balance
 
+    # Deposit functionality, a user is asked to input a deposit amount
     def deposit(self):
         deposit_amount = float(input("How much would you like to deposit?\n => "))
         if deposit_amount <= 0:
             output = "Please try again"
         else:
             self.balance += deposit_amount
+            # The user is notified of their new balance upon depositing
+            print("")
+            print("="*20)
             output = f"Your current balance is:\n => £{self.balance}"
         return output
 
+    # Withdraw functionality, a user is asked to input a withdrawal amount
     def withdraw(self):
         withdrawal_amount = float(input("How much would you like to withdraw from your account?\n => "))
         if withdrawal_amount <= 0:
             output = "Please try again"
         else:
             self.balance -= withdrawal_amount
+            # Once withdrawn, the user is charged the bank fees and balance is updated
+            self.balance = self.balance * self.bank_fees_deducted
+            print("")
+            print("=" * 20)
             print(f"You have withdrawn £{withdrawal_amount} from your account.")
             print("=" * 20)
-            output = f"After applying 5% charge in bank fees, your current balance is:\n => £{self.balance * self.bank_fees_deducted}"
+            output = f"After applying 5% charge in bank fees, your current balance is:\n => £{self.balance}"
         return output
 
+    # Displaying the bank account number and balance
     def display_bank_details(self):
         print("")
         print("=" * 20)
         print(f"Account Number: {self.__account_number}")
         print(f"Balance: £{self.balance}")
         print("=" * 20)
+        print("")
 
 
 
