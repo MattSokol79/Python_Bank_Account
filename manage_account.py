@@ -30,10 +30,12 @@ class ManageAccount(MyAccount):
             self.display_bank_details()
 
         elif '3' in selection:
-            self.deposit()
+            print(self.deposit())
+            print("=" * 20)
 
         elif '4' in selection:
-            self.withdraw()
+            print(self.withdraw())
+            print("=" * 20)
 
         elif "exit" in selection:
             self.continue_displaying = False

@@ -25,20 +25,22 @@ class MyAccount(AccountHolderDetails):
     def deposit(self):
         deposit_amount = float(input("How much would you like to deposit?\n => "))
         if deposit_amount <= 0:
-            print("Please try again")
+            output = "Please try again"
         else:
             self.balance += deposit_amount
-        return f"Your current balance is:\n => £{self.balance}"
+            output = f"Your current balance is:\n => £{self.balance}"
+        return output
 
     def withdraw(self):
         withdrawal_amount = float(input("How much would you like to withdraw from your account?\n => "))
         if withdrawal_amount <= 0:
-            print("Please try again")
+            output = "Please try again"
         else:
             self.balance -= withdrawal_amount
             print(f"You have withdrawn £{withdrawal_amount} from your account.")
             print("=" * 20)
-        return f"After applying 5% charge in bank fees, your current balance is:\n => £{self.balance * self.bank_fees_deducted}"
+            output = f"After applying 5% charge in bank fees, your current balance is:\n => £{self.balance * self.bank_fees_deducted}"
+        return output
 
     def display_bank_details(self):
         print("")
